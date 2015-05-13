@@ -133,6 +133,9 @@ UploadUi = function ($dropzone, settings) {
             if (!$dropzone.find('a.image-url')[0]) {
                 $dropzone.append('<a class="image-url" title="Add image from URL"><span class="hidden">URL</span></a>');
             }
+            if (!$dropzone.find('a.image-browser')[0]) {
+                $dropzone.append('<a class="image-browser" title="Add image from browser"><span class="hidden">URL</span></a>');
+            }
            // if (!$dropzone.find('a.image-webcam')[0]) {
            //     $dropzone.append('<a class="image-webcam" title="Add image from webcam"><span class="hidden">Webcam</span></a>');
            // }
@@ -158,6 +161,18 @@ UploadUi = function ($dropzone, settings) {
             }
             $dropzone.find('a.image-url').on('click', function () {
                 self.initUrl();
+            });
+            $dropzone.find('a.image-browser').on('click', function () {
+                var url = Ghost.apiRoot + '/uploads/browse';
+                console.log("image browser button activated!!!");
+                return ic.ajax.request( url, {
+                    type: 'GET'
+                }).then(function (result) {
+                    console.log("Image browser; url = " + url + '  result: ', result);
+                }).catch(function () {
+                    alert("Image browser; url = " + url + '  result: error' );
+                });
+
             });
         },
         initUrl: function () {

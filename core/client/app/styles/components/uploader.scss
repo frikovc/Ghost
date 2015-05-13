@@ -46,7 +46,8 @@
     }
 
     .image-url,
-    .image-upload {
+    .image-upload,
+    .image-browser {
         line-height: 12px;
         padding: 10px;
         display: block;
@@ -72,6 +73,11 @@
 
     .image-upload {
         @include icon($i-image, 12px);
+    }
+
+    .image-browser{
+        left: 20px;
+        @include icon($i-search, 12px);
     }
 
     .btn-green {

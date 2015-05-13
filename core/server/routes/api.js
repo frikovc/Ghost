@@ -89,6 +89,7 @@ apiRoutes = function (middleware) {
 
     // ## Uploads
     router.post('/uploads', middleware.busboy, api.http(api.uploads.add));
+    router.get('/uploads/browse', api.http(api.uploads.browse));
 
     return router;
 };
